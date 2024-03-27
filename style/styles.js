@@ -2,6 +2,10 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 
+    container: {
+        paddingTop: 20,
+    },
+
     containerOptions: {
         display: 'flex',
         flexDirection: 'row',
@@ -56,6 +60,17 @@ export default StyleSheet.create({
         alignItems: 'center',
         gap: 20,
         marginTop: 20,
+        justifyContent: 'space-between',
+    },
+
+    optionsFeedback: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        width: '30%',
+        height: 150,
+        borderRadius: 15,
+        borderWidth: 1,
     },
 
     input :{
@@ -63,5 +78,27 @@ export default StyleSheet.create({
         padding: 10,
         borderRadius: 15,
         borderWidth: 1,
+        height: '50%'
+    },
+    
+    iconsFeedback: {
+        width: 60,
+        height: 60,
+    },
+
+    containerApreciation: {
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 60,
+    },
+
+    appreciationText: {
+        color: 'white',
+        fontSize: 24,
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        padding: 10,
+        borderRadius: 10,
     }
 });

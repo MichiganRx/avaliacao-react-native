@@ -40,6 +40,7 @@ function Index({ navigation }) {
                         onChange={onChange}
                     />
                 )}
+                
             </View>
             <View style={styles.containerOptions}>
             <Card

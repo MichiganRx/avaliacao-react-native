@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, TextInput, TouchableHighlight } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import { View, Text, Image, TextInput, TouchableHighlight, Alert} from 'react-native';
 import styles from '../style/styles';
+import { useNavigation } from '@react-navigation/native';
 
 function Feedback({ route }) {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    Alert.alert(
+      'Obrigado!',
+      'Enviado com sucesso!',
+      [
+        { text: 'Nova Avaliação', onPress: () => navigation.navigate("TelaInicial") },
+      ]
+    );
+  };
+
   const { feedbackType, selectedDate } = route.params;
   const [feedbackText, setFeedbackText] = useState('');
-  const [setShowDatePicker] = useState(false);
   const [date, setDate] = useState(selectedDate || new Date());
-
-  const onChange = (selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShowDatePicker(false);
-    setDate(currentDate);
-  };
 
   const getImageSource = (type) => {
     switch (type) {
@@ -28,6 +33,7 @@ function Feedback({ route }) {
     }
   };
 
+  
   return (
     <View style={styles.container}>
       <View style={styles.containerText}>
@@ -37,9 +43,9 @@ function Feedback({ route }) {
         <Text>Data selecionada: {date.toLocaleDateString()}</Text>
       </View>
       <View style={styles.containerFeedback}>
-        <View style={styles.options}>
+        <View style={styles.optionsFeedback}>
             <Image
-                style={styles.icons}
+                style={styles.iconsFeedback}
                 source={getImageSource(feedbackType)}
             />
             <Text>{feedbackType}</Text>
@@ -51,8 +57,14 @@ function Feedback({ route }) {
             placeholder="Digite seu feedback aqui..."
             multiline={true}
         />
+          <TouchableHighlight
+            style={styles.buttonData}
+            onPress={handlePress}
+          >
+            <Text style={styles.buttonText}>Enviar</Text>
+          </TouchableHighlight>
+        </View>
       </View>
-    </View>
   );
 }
 

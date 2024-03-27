@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TelaInicial">
+      <Stack.Navigator initialRouteName="TelaInicial" screenOptions={{headerShown: false}}>
         <Stack.Screen name="TelaInicial" component={Index} />
         <Stack.Screen name="feedback" component={FeedbackScreen} />
       </Stack.Navigator>
